@@ -33,3 +33,4 @@
 - `visualization/common-grid-witness-explorer.zip`
 - `visualization/common-grid-witness.gif`
 - `visualization/index.html`
+- `visualization/version-doi.svg`
