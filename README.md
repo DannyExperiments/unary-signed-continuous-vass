@@ -1,6 +1,7 @@
 # Reachability in Unary Signed Continuous VASS
 
 [![Repository verification](https://github.com/DannyExperiments/unary-signed-continuous-vass/actions/workflows/verify.yml/badge.svg?branch=main)](https://github.com/DannyExperiments/unary-signed-continuous-vass/actions/workflows/verify.yml) [![PDF build](https://github.com/DannyExperiments/unary-signed-continuous-vass/actions/workflows/pdf.yml/badge.svg?branch=main)](https://github.com/DannyExperiments/unary-signed-continuous-vass/actions/workflows/pdf.yml) [![Replay verification](https://github.com/DannyExperiments/unary-signed-continuous-vass/actions/workflows/replay.yml/badge.svg?branch=main)](https://github.com/DannyExperiments/unary-signed-continuous-vass/actions/workflows/replay.yml)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24588801.svg)](https://doi.org/10.5281/zenodo.24588801)
 
 **Q1568.** Ajdarów, Balasubramanian and Orlikowski ask in §6 of CONCUR 2026 for the complexity of reachability and coverability of unary d-CVASS with integer updates over unrestricted rational semantics in any fixed dimension d ≥ 2. [Problem source](https://doi.org/10.4230/LIPIcs.CONCUR.2026.7)
 
