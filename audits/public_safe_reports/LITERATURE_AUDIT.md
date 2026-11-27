@@ -1,0 +1,20 @@
+# Literature and priority assessment
+
+Ajdarów, Balasubramanian and Orlikowski already prove the one-dimensional case, while their binary-update, rational-update and nonnegative-semantics results concern different input or prefix constraints. Blondin and Haase give the prior general NP framework. Almagor, Ghosh, Leys and Pérez give short linear path schemes and polynomial-time feasibility within each scheme. A short scheme can still stand for arbitrarily long individual runs. Their feasibility bound alone does not give a common grid of polynomial denominator. The targeted primary-source check through 2026-11-27 located no prior publication giving this grid and the resulting NL bound in the stated regime.
+
+## Source notes
+
+# Source, prior art and scope audit
+
+November 27, 2026. Checked the [August 24, 2026 publisher record](https://doi.org/10.4230/LIPIcs.CONCUR.2026.7) and final PDF, §6 p. 7:16, as well as the [latest author arXiv v1](https://arxiv.org/abs/2606.30042), posted June 29, 2026. Both identify the unary integer-update signed regime for d≥2 as future work; no later version or exact resolution located in targeted title, terminology and author searches.
+
+Closest results and explicit deduction checks:
+
+1. Ajdarów–Balasubramanian–Orlikowski's final paper treats one dimension and other encoding/semantics combinations. In particular its signed one-dimensional unary integer case is already NL-complete and is not claimed as new. Its higher-dimensional unary NP-hardness for *rational updates* relies on denominators that are not restricted to the fixed collection of input endpoint coordinates. The integer-update higher-dimensional hardness for nonnegative runs does not automatically survive removal of all prefix constraints. Our witness reconstruction uses that removal essentially.
+2. [Blondin–Haase, LICS 2017, §IV, Theorems 4.9–4.11](https://michaelblondin.com/papers/BH17.pdf) describes signed continuous runs via existential rational arithmetic and supplies the general NP bound. Linear programming basic solutions alone do not supply a streaming logarithmic-space decision procedure: the justification here is that potentially many active bounds contribute a single ε-column, all unpinned columns fit in the fixed displacement dimension, and a short support-preserving walk can actually realize the resulting small common grid with each firing positive and each bridge used once.
+3. [Blondin et al., discrete integer-counter unary fixed-dimension reachability](https://lsv.ens-paris-saclay.fr/Publis/PAPERS/PDF/BFGHM-lics15-long.pdf) is NL-complete for the fully unrestricted integer-counter semantics. That alone does not transfer to fractional steps: grid restriction without a polynomial common-grid witness can discard solutions. Once the grid lemma is proved, one may instead use a polynomial family of discrete grids, but the proof here gives the direct streaming algorithm and also handles coverability. For example, a single edge (2,2) from p to q reaches (1,1) continuously but not by all-full firings.
+4. The main positive input facts are fixed dimension, unary magnitudes, integer update entries, and unrestricted signed rational coordinates at intermediate states. We make no inference for binary encodings, variable dimension, rational transition coefficients, nonnegative semantics, or zero tests.
+
+No external priority, peer review, or machine-checked proof is claimed.
+
+[Almagor, Ghosh, Leys and Pérez, full version](https://arxiv.org/pdf/2210.00785#page=10), §4, Theorems 11 and 13 and Lemmas 14–15, give short linear path schemes whose reachable sets contain those of the original paths and describe them using strict linear constraints and convex semilinear Horn clauses. After choosing active cycle branches, one could adapt a fixed-displacement-rank argument to that encoding. Establishing polynomial numerical denominators and expanding the chosen cycles within polynomial length are additional steps. This paper proves the required witness directly, without selecting or checking a path scheme.

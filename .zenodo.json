@@ -1,0 +1,34 @@
+{
+  "title": "Reachability in Unary Signed Continuous VASS",
+  "upload_type": "software",
+  "creators": [
+    {
+      "name": "DannyExperiments"
+    }
+  ],
+  "keywords": [
+    "continuous VASS",
+    "vector addition system with states",
+    "reachability",
+    "coverability",
+    "nondeterministic logarithmic space",
+    "unary encoding",
+    "signed rational semantics",
+    "integer updates",
+    "common denominator",
+    "linear programming"
+  ],
+  "description": "<p>Both problems are NL-complete under deterministic logspace many-one reductions in every fixed positive dimension. Updates are integers, endpoint coordinates are rational with unary numerator and denominator magnitudes, and all intermediate counter values may be signed.</p><p>For the support of a successful run, the components form a chain connected by one-shot bridges. An edge-total linear program maximizes a common positive lower bound on used edges and caps bridges at 1. At a vertex, substituting active bounds leaves at most d independent free columns. A fixed-size determinant gives polynomially bounded totals on one grid. An internal detour construction and integer allocation realize those totals as positive firings on a short walk. The walk can be streamed in logarithmic space.</p><p>Ajdarów, Balasubramanian and Orlikowski already prove the one-dimensional case, while their binary-update, rational-update and nonnegative-semantics results concern different input or prefix constraints. Blondin and Haase give the prior general NP framework. Almagor, Ghosh, Leys and Pérez give short linear path schemes and polynomial-time feasibility within each scheme. A short scheme can still stand for arbitrarily long individual runs. Their feasibility bound alone does not give a common grid of polynomial denominator. The targeted primary-source check through 2026-11-27 located no prior publication giving this grid and the resulting NL bound in the stated regime.</p><p>The argument uses fixed dimension, unary magnitudes, integer updates and arbitrary signed rational intermediate counter values. Nonnegative or tested prefixes, rational edge weights, variable dimension and binary magnitudes are outside its scope.</p><p>The exact replay checks 43,680 grid allocation fixtures, the worked reachability example, signed coverability, and a zero-length run. The proofs are analytic. The finite replay covers the listed fixtures and the 3D explorer illustrates the worked example. Internally reviewed, not peer reviewed. No proof-assistant formalization is included.</p><p>The six files provide the typeset paper, matching LaTeX, bibliography, citation, repository checksums and complete versioned source and evidence archive.</p><p>The catalog discovery project credits ChatGPT Astra 6.2 (OpenAI). The recovered packet carries no per-run model metadata. OpenAI Codex independently audited the mathematics. GPT-6.2 Sol (OpenAI) checked primary sources and prepared the manuscript, finite exact replay and illustrations. DannyExperiments is the project citation identity.</p><p>Release v1.0.0. https://github.com/DannyExperiments/unary-signed-continuous-vass/releases/tag/v1.0.0</p>",
+  "license": "other-closed",
+  "version": "1.0.0",
+  "access_right": "open",
+  "notes": "All rights reserved. Publicly downloadable files are supplied without a repository-wide reuse license.",
+  "publication_date": "2026-11-27",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/DannyExperiments/unary-signed-continuous-vass/releases/tag/v1.0.0",
+      "relation": "isSupplementTo",
+      "resource_type": "software"
+    }
+  ]
+}

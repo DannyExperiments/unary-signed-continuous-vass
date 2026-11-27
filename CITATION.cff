@@ -1,0 +1,22 @@
+cff-version: "1.2.0"
+message: "Cite this version of the research release."
+type: software
+title: "Reachability in Unary Signed Continuous VASS"
+authors:
+  - name: "DannyExperiments"
+version: "1.0.0"
+date-released: 2026-11-27
+doi: "10.5281/zenodo.24588801"
+url: "https://doi.org/10.5281/zenodo.24588801"
+repository-code: "https://github.com/DannyExperiments/unary-signed-continuous-vass"
+keywords:
+  - "continuous VASS"
+  - "vector addition system with states"
+  - "reachability"
+  - "coverability"
+  - "nondeterministic logarithmic space"
+  - "unary encoding"
+  - "signed rational semantics"
+  - "integer updates"
+  - "common denominator"
+  - "linear programming"

@@ -1,0 +1,35 @@
+# Public source inventory
+
+- `.github/workflows/pdf.yml`
+- `.github/workflows/replay.yml`
+- `.github/workflows/verify.yml`
+- `.zenodo.json`
+- `AI_DISCLOSURE.md`
+- `CITATION.cff`
+- `CLAIMS_EVIDENCE_MATRIX.md`
+- `CLAIM_SCOPE_AND_LIMITATIONS.md`
+- `CONTRIBUTING.md`
+- `LICENSE_STATUS.md`
+- `MANIFEST.md`
+- `PROVENANCE.md`
+- `README.md`
+- `REPRODUCIBILITY.md`
+- `SECURITY.md`
+- `STATUS.md`
+- `audits/public_safe_reports/LITERATURE_AUDIT.md`
+- `audits/public_safe_reports/MATHEMATICAL_AUDIT.md`
+- `formalization/README.md`
+- `paper/BUILD.md`
+- `paper/manuscript.pdf`
+- `paper/manuscript.tex`
+- `paper/references.bib`
+- `proof/PROBLEM_AND_PROOF.md`
+- `release/RELEASE_NOTES.md`
+- `scripts/verify_repository.py`
+- `verification/README.md`
+- `verification/logs/replay.txt`
+- `verification/src/replay.py`
+- `visualization/README.md`
+- `visualization/common-grid-witness-explorer.zip`
+- `visualization/common-grid-witness.gif`
+- `visualization/index.html`

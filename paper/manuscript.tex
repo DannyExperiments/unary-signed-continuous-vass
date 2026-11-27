@@ -1,0 +1,59 @@
+\documentclass[a4paper,11pt]{amsart}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{2em}
+\renewcommand{\bibliofont}{\normalsize\raggedright}
+\DeclareMathSizes{9}{9}{8}{8}
+\DeclareMathSizes{10.95}{10.95}{8}{8}
+\date{}
+\newtheorem{thm}{Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\DeclareMathOperator{\NL}{NL}
+\title{Reachability in Unary Signed Continuous VASS}
+\begin{document}
+\begin{abstract}
+Reachability and coverability for unary continuous vector addition systems with integer updates and unrestricted rational counter values are NL-complete in every fixed dimension. A fixed-support linear program yields polynomially bounded edge totals with a common denominator. We realize these totals on a polynomial-length walk with every firing positive, giving a logspace-verifiable witness.
+\end{abstract}
+\maketitle
+\section{Model and result}
+Ajdar\'ow, Balasubramanian and Orlikowski~\cite[\S6]{abo} ask for the complexity of reachability and coverability in unary continuous VASS with integer updates over signed rational semantics in fixed dimension $d\ge2$. Each edge $e$ has label $w_e\in\mathbb Z^d$. At an occurrence of $e$, the run may add $a w_e$ for any $a\in\mathbb Q\cap(0,1]$. Counters take arbitrary rational values at every state. For input configurations $p(u)$ and $q(v)$, reachability requires equality to $v$ at $q$, and coverability requires coordinatewise dominance of $v$ at $q$. Update entries and endpoint numerators and denominators are encoded in unary.
+\begin{thm}
+For every fixed positive dimension $d$, reachability and coverability in this model are $\NL$-complete under deterministic logspace many-one reductions.
+\end{thm}
+The one-dimensional case already appears in~\cite[Theorem~3]{abo}. Their binary integer-update and unary rational-update hardness results involve larger integers or update denominators. Their higher-dimensional unary integer-update hardness for nonnegative semantics uses restrictions on intermediate configurations. Blondin and Haase~\cite[\S IV.B]{bh} obtain a general NP bound by an existential rational encoding. Almagor et al.~\cite[Theorems~11 and~13]{geom} give polynomial-size linear path schemes and polynomial-time feasibility tests on each scheme. A scheme can denote runs of unbounded length and its feasibility theorem supplies no polynomial bound on a common firing denominator. The argument here obtains both bounds directly from the support of a successful run.
+\section{A common-grid witness}
+\begin{lem}
+If the input admits a successful run, it admits one of polynomial length with a single polynomially bounded integer denominator for every firing multiplier. The bounds depend only on the fixed dimension.
+\end{lem}
+\begin{proof}
+Let $N$ be the input length plus $d+2$. The empty run needs no reconstruction. Otherwise choose a successful run and let $E'$ be its set of used edges, preserving parallel edge identities. In the graph supported by the run, the strongly connected components form a directed chain along the run. Indeed, its walk in the acyclic condensation cannot return to a component. Every edge in the support occurs in the run, so the cross-component edges are exactly one per consecutive pair of components and each occurs once. Call these edges bridges.
+
+Let $x_e$ be the total firing multiplier on edge $e$. Put $b=v-u$. Use the real linear program with variables $x_e$, $\epsilon$ and, for coverability, a surplus vector $z$:
+\[
+ \sum_{e\in E'} w_e x_e-z=b,\qquad
+ 0\le\epsilon\le1,\qquad x_e\ge\epsilon,\qquad
+ x_e\le1\quad(e\text{ a bridge}),\qquad z\ge0.
+\]
+For reachability omit $z$. The chosen run gives a feasible point with $\epsilon>0$. The feasible polyhedron is pointed because all coordinates are nonnegative. The bounded maximum of $\epsilon$ is attained, and the maximizing face has a vertex. Fix such a vertex of the full polyhedron.
+
+Pin $x_e$ to $\epsilon$ wherever equality holds. Of the remaining $x_e$, pin each bridge at equality to $1$. Pin zero $z$ coordinates and pin $\epsilon$ if it equals $1$. If $\epsilon$ is unpinned, substituting the pinned variables into the displacement equations gives its column as the sum of the lower-pinned edge labels. All other free columns are individual edge labels or negative unit vectors. The free columns are independent. Otherwise a nonzero kernel direction and its negative give two small feasible perturbations of the vertex, moving lower-pinned variables along with $\epsilon$. The active inequalities remain equalities and all other inequalities have strict slack. If a bridge sits at both bounds, then $\epsilon=1$ and both equalities are preserved. Thus the number of free variables is at most $d$.
+
+Choose a nonsingular square minor on these columns. Its integer entries have absolute value at most $N^2$ since the number of edges and each update entry are at most $N$. The right-hand side is $b$ minus an integer vector of polynomial size. Let $D_0$ be the product of the denominators of the $2d$ endpoint coordinates, so $D_0\le N^{2d}$. By Cramer's rule the minor determinant times $D_0$ in absolute value is a common denominator $D$ for the free variables, and their numerators are polynomially bounded. With no free variables take $D=D_0$. All pinned values use the same denominator. In particular each $Dx_e$ is a positive integer.
+
+Within each supported component take a walk from entry to exit going through every internal edge. This can be done by joining a list of the internal edges by simple paths. A component with no internal edge consists of a single vertex with coincident entry and exit. Join the component walks by the bridges. Whenever an internal edge needs more occurrences to accommodate its total $x_e$, insert $\lceil x_e\rceil$ copies of that edge followed by a simple return path. Place these copies at an existing visit to its tail. This step preserves the bridge counts and only increases internal multiplicities. The resulting length $L$ is polynomial and each multiplicity $m_e$ satisfies $1\le m_e\le L$ and $x_e\le m_e$.
+
+Set $D'=DL$. There are $x_eD'$ integer units to allocate to the $m_e$ occurrences, with bounds
+\[
+ m_e\le L\le x_eD'\le m_eD'.
+\]
+Give each occurrence one unit and distribute the remainder up to capacity $D'$ per occurrence. Each share divided by $D'$ is a valid rational multiplier. Their totals give exactly the required update, with surplus $z$ for coverability. Intermediate counter values are unrestricted.
+\end{proof}
+\section{Logarithmic space and an example}
+Guess $D'$ and then guess up to the polynomial length bound a sequence of edge indices and numerators in $[1,D']$. Track the current state, step count and the $d$ integer running sums obtained by multiplying each guessed numerator by its edge label. These integers, including signed partial sums, remain polynomially bounded because the parameters and labels are. At $q$ check the required relation by integer cross multiplication against the endpoint fractions. Fixed dimension permits $O(\log N)$ total work space. The empty run can be checked immediately. For hardness take a directed graph and set every update and both endpoints to zero. Both questions are then equivalent to directed graph reachability, and the construction uses deterministic logspace.
+
+For example, take a loop $(2,0)$ at $p$ followed by a bridge $(-1,3)$ to $q$. To reach $(5/2,3/2)$ from zero, the total loop multiplier is $3/2$ and the bridge multiplier is $1/2$. Two loop occurrences of multipliers $1$ and $1/2$ and one bridge occurrence of multiplier $1/2$ realize the target on the common denominator $2$.
+\bibliographystyle{amsplain}
+\bibliography{references}
+\end{document}
