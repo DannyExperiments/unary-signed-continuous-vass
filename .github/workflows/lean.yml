@@ -1,0 +1,37 @@
+name: Lean · positive grid allocation
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  certificate:
+    name: Check SignedGrid.shares
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Download and verify the pinned Lean distribution
+        env:
+          LEAN_ARCHIVE: lean-4.30.0-linux.tar.zst
+          LEAN_SHA256: 4dad74141c2c119ca1aa626656be83b8e14238afba97271fd7bf1eb3f081b319
+        run: |
+          cd "$RUNNER_TEMP"
+          curl --fail --location --retry 3 --silent --show-error \
+            "https://github.com/leanprover/lean4/releases/download/v4.30.0/$LEAN_ARCHIVE" \
+            --output "$LEAN_ARCHIVE"
+          printf '%s  %s\n' "$LEAN_SHA256" "$LEAN_ARCHIVE" | sha256sum --check
+          tar --zstd -xf "$LEAN_ARCHIVE"
+      - name: Check the certificate with warnings treated as errors
+        run: |
+          "$RUNNER_TEMP/lean-4.30.0-linux/bin/lean" --version
+          "$RUNNER_TEMP/lean-4.30.0-linux/bin/lean" -DwarningAsError=true formalization/Q1568Grid.lean

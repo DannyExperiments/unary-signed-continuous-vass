@@ -1,5 +1,6 @@
 # Reachability in Unary Signed Continuous VASS
 
+[![Lean · positive grid allocation](https://github.com/DannyExperiments/unary-signed-continuous-vass/actions/workflows/lean.yml/badge.svg?branch=main)](https://github.com/DannyExperiments/unary-signed-continuous-vass/actions/workflows/lean.yml)
 [![Repository verification](https://github.com/DannyExperiments/unary-signed-continuous-vass/actions/workflows/verify.yml/badge.svg?branch=main)](https://github.com/DannyExperiments/unary-signed-continuous-vass/actions/workflows/verify.yml) [![PDF build](https://github.com/DannyExperiments/unary-signed-continuous-vass/actions/workflows/pdf.yml/badge.svg?branch=main)](https://github.com/DannyExperiments/unary-signed-continuous-vass/actions/workflows/pdf.yml) [![Replay verification](https://github.com/DannyExperiments/unary-signed-continuous-vass/actions/workflows/replay.yml/badge.svg?branch=main)](https://github.com/DannyExperiments/unary-signed-continuous-vass/actions/workflows/replay.yml)
 [![DOI](visualization/version-doi.svg)](https://doi.org/10.5281/zenodo.24588801)
 
@@ -24,3 +25,7 @@ For the support of a successful run, the components form a chain connected by on
 The exact replay checks 43,680 grid allocation fixtures, the worked reachability example, signed coverability, and a zero-length run. These small exact tests illustrate specific steps. The paper gives the analytic proof.
 
 [Reproducibility](REPRODUCIBILITY.md) · [Prior work](audits/public_safe_reports/LITERATURE_AUDIT.md) · [Scope](CLAIM_SCOPE_AND_LIMITATIONS.md) · [AI disclosure](AI_DISCLOSURE.md)
+
+## Lean verification
+
+For any positive integer capacity D and m occurrences, every integer mass between m and mD admits exactly m positive shares bounded by D. Lean proves existence by constructing the shares recursively. In the signed-VASS paper this supplies the allocation after multiplying by a common denominator. Obtaining a short supported walk, bounding that denominator, and proving the complexity classification are separate steps. [Lean source and replay](formalization/README.md)
